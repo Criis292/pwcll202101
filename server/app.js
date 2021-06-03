@@ -3,10 +3,13 @@ import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import logger from 'morgan';
+import morgan from 'morgan';
 
 import indexRouter from '@s-routes/index';
 import usersRouter from '@s-routes/users';
+
+// Importing Configurations
+import configTemplateEngine from '@s-config/template-engine'
 
 // Webpack Modules
 import webpack from 'webpack';
@@ -52,10 +55,9 @@ if (env === 'development') {
 }
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+configTemplateEngine(app);
 
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
