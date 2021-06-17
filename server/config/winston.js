@@ -2,7 +2,7 @@
 import winston, { format } from 'winston';
 import appRoot from 'app-root-path';
 // Componentes para crear el formato personalizado
-const { combine, timestamp, printf, uncolorize, json, colorize } = format;
+const { combine, timestamp, printf, uncolorize, colorize, json } = format;
 //
 // Creando el perfil de color para el log
 const colors = {
